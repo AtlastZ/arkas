@@ -40,7 +40,7 @@ function handleEvent(event) {
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=0');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
+  } else if (event.message.type === 'text' && (event.message.text === 'สถานะ'|| event.message.text==='status')) {
     console.log("Printing val GET");
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
       var data = response.data;
