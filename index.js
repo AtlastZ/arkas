@@ -45,28 +45,21 @@ function handleEvent(event) {
     // var val = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
     // console.log(typeof val);
     // console.log(val);
-    var val
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
       console.log(response);
       var data = response.data;
-      console.log("dataBuffer:"+data);
-      val = data;
-      if (1=== val) {
+      console.log("dataBuffer:" + data);
+      if (1 === data) {
         var text1 = "ไฟเปิดอยู่";
-      } else if (0===val) {
+      } else if (0 === data) {
         var text1 = "ไฟปิดอยู่";
       }
       const payload = {
         type: "text",
         text: text1
       };
-  
       return client.replyMessage(event.replyToken, payload);
     })
-    console.log(typeof(val));
-    console.log(1===val);
-    console.log(val);
-  }
 }
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
