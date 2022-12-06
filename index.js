@@ -42,7 +42,7 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
     // var val = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
+    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0',data).then((response) => {
       // handle success
       console.log(response);
     })
