@@ -45,11 +45,14 @@ function handleEvent(event) {
     // var val = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
     // console.log(typeof val);
     // console.log(val);
-    
-    var response = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
-    console.log(response);
-    var data = response.data;
-    console.log(data);
+
+    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
+      console.log(response);
+      var data = response.data;
+      console.log("dataBuffer:");
+      console.log(data);
+    })
+
     if (1 == val) {
       var text1 = "ไฟเปิดอยู่";
     } else {
