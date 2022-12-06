@@ -49,7 +49,8 @@ function handleEvent(event) {
     // };
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
       // handle success
-      console.log(response[0]);
+      
+      console.log(response);
     })
     console.log(typeof val);
     console.log(val);
