@@ -44,9 +44,9 @@ function handleEvent(event) {
      var val = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
     console.log(val);
     if (1 == val) {
-      text1 = "ไฟเปิดอยู่";
+      var text1 = "ไฟเปิดอยู่";
     } else {
-      text1 = "ไฟปิดอยู่";
+      var text1 = "ไฟปิดอยู่";
     }
     const payload = {
       type: "text",
