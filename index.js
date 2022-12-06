@@ -47,7 +47,7 @@ function handleEvent(event) {
     console.log(val);
     const options = {
       params: {
-        data
+        data : data,
       }
     };
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0',options).then((response) => {
