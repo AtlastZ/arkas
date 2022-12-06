@@ -51,21 +51,21 @@ function handleEvent(event) {
       var data = response.data;
       console.log("dataBuffer:"+data);
       val = data;
+      if (1=== val) {
+        var text1 = "ไฟเปิดอยู่";
+      } else if (0===val) {
+        var text1 = "ไฟปิดอยู่";
+      }
+      const payload = {
+        type: "text",
+        text: text1
+      };
+  
+      return client.replyMessage(event.replyToken, payload);
     })
     console.log(typeof(val));
     console.log(1===val);
     console.log(val);
-    if (1=== val) {
-      var text1 = "ไฟเปิดอยู่";
-    } else if (0===val) {
-      var text1 = "ไฟปิดอยู่";
-    }
-    const payload = {
-      type: "text",
-      text: text1
-    };
-
-    return client.replyMessage(event.replyToken, payload);
   }
 }
 const port = process.env.PORT || 3000;
