@@ -52,8 +52,8 @@ function handleEvent(event) {
       console.log("dataBuffer:"+data);
       val = data;
     })
-
-    if ("1" == val) {
+    console.log(typeof val);
+    if ("1"== val) {
       var text1 = "ไฟเปิดอยู่";
     } else if ("0"==val) {
       var text1 = "ไฟปิดอยู่";
