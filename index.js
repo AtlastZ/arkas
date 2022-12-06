@@ -46,9 +46,7 @@ function handleEvent(event) {
     // console.log(typeof val);
     // console.log(val);
     
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
-      console.log(response);
-    })
+    var response = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
     var data = response.data;
     console.log(data);
     if (1 == val) {
