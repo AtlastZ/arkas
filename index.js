@@ -53,9 +53,9 @@ function handleEvent(event) {
       val = data;
     })
 
-    if (1 == val) {
+    if ("1" == val) {
       var text1 = "ไฟเปิดอยู่";
-    } else {
+    } else if ("0"==val) {
       var text1 = "ไฟปิดอยู่";
     }
     const payload = {
