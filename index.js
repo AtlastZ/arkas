@@ -41,14 +41,18 @@ function handleEvent(event) {
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=0');
     return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
-    // var val = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
-      // handle success
-      // response.split(',').forEach;
-      console.log(response);
-    })
+    console.log("Printing val GET");
+    var val = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
     console.log(typeof val);
     console.log(val);
+    const options = {
+      params: {
+        data
+      }
+    };
+    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0',options).then((response) => {
+      console.log(response);
+    })
     if (1 == val) {
       var text1 = "ไฟเปิดอยู่";
     } else {
