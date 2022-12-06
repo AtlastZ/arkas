@@ -42,9 +42,6 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
     console.log("Printing val GET");
-    // var val = axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')
-    // console.log(typeof val);
-    // console.log(val);
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
       var data = response.data;
       console.log("dataBuffer:" + data);
@@ -59,6 +56,7 @@ function handleEvent(event) {
       };
       return client.replyMessage(event.replyToken, payload);
     })
+  }
 }
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
