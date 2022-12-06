@@ -20,39 +20,40 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
-  } else if (event.message.type==='text' && event.message.text === 'Hello'){
-    const payload ={
+  } else if (event.message.type === 'text' && event.message.text === 'Hello') {
+    const payload = {
       type: "text",
       text: "สวัสดีครับ พิมพ์คำสั่งที่ต้องการได้เลยครับ"
     };
-  return client.replyMessage(event.replyToken, payload);
-}else if (event.message.type==='text' && event.message.text === 'เปิดไฟ'){
-    const payload ={
+    return client.replyMessage(event.replyToken, payload);
+  } else if (event.message.type === 'text' && event.message.text === 'เปิดไฟ') {
+    const payload = {
       type: "text",
       text: "เปิดไฟแล้วนะคะ"
     };
-  axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=1');
-  return client.replyMessage(event.replyToken, payload);
-  }else if (event.message.type==='text' && event.message.text === 'ปิดไฟ'){
-      const payload ={
-        type: "text",
-        text: "ปิดไฟแล้วนะคะ"
-      };
+    axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=1');
+    return client.replyMessage(event.replyToken, payload);
+  } else if (event.message.type === 'text' && event.message.text === 'ปิดไฟ') {
+    const payload = {
+      type: "text",
+      text: "ปิดไฟแล้วนะคะ"
+    };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=0');
     return client.replyMessage(event.replyToken, payload);
-    }else if (event.message.type==='text' && event.message.text === 'สถานะ'){
-      if(1==axios.post('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')){
-        text = "ไฟเปิดอยู่";
-      }else{
-        text ="ไฟปิดอยู่";
-      }
-      const payload ={
-        type: "text",
-        text: "ปิดไฟแล้วนะคะ"
-      };
-    
-    return client.replyMessage(event.replyToken, payload);
+  } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
+    axios.post('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0',val)
+    if (1 == val) {
+      text1 = "ไฟเปิดอยู่";
+    } else {
+      text1 = "ไฟปิดอยู่";
     }
+    const payload = {
+      type: "text",
+      text: text1
+    };
+
+    return client.replyMessage(event.replyToken, payload);
+  }
 }
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
