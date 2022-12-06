@@ -41,7 +41,7 @@ function handleEvent(event) {
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=0');
     return client.replyMessage(event.replyToken, payload);
     }else if (event.message.type==='text' && event.message.text === 'สถานะ'){
-      if(axios.post('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')){
+      if(1==axios.post('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0')){
         text = "ไฟเปิดอยู่";
       }else{
         text ="ไฟปิดอยู่";
