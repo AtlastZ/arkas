@@ -58,9 +58,9 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, payload);
   } else {
     const payload = {
-      type: "sticker",
-      packageId : "11539",
-      stickerId : "52114129"
+      "type": "sticker",
+      "packageId" : "11539",
+      "stickerId" : "52114129"
     };
     const message = {
       type: "text",
