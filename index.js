@@ -62,12 +62,6 @@ function handleEvent(event) {
       "packageId" : "11539",
       "stickerId" : "52114129",
     }
-    client.pushMessage('<to>', payload).then(()=>{
-      console.log("reply null");
-    })
-    .catch(()=>
-      console.log("failed to send")
-    )
     const payload2 = {
       type: "text",
       text: "test1\ntest2",
