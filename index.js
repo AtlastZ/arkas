@@ -62,7 +62,7 @@ function handleEvent(event) {
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=0');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'สถานะ' || event.message.text === 'status')) {
+  } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
     console.log("Printing val GET");
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
       var data = response0.data;
@@ -91,7 +91,45 @@ function handleEvent(event) {
               var text3 = "ความสว่าง " + response3.data + " %";
               const payload = {
                 type: "text",
-                text: text0+"\n"+text1+"\n"+text4+"\n"+text2+"\n"+text3+"\n"
+                text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3 + "\n"
+              };
+              return client.replyMessage(event.replyToken, payload);
+            })
+          })
+        })
+      })
+
+    })
+  }else if (event.message.type === 'text' && event.message.text === 'status') {
+    console.log("Printing val GET");
+    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
+      var data = response0.data;
+      if (1 === data) {
+        var text0 = "The lamp is on";
+      } else if (0 === data) {
+        var text0 = "The lamp is off";
+      }
+      axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1').then((response1) => {
+        var data1 = response1.data;
+        if (1 === data1) {
+          var text1 = "Device 1 is on";
+        } else if (0 === data1) {
+          var text1 = "Device 1 is off";
+        }
+        axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4').then((response4) => {
+          var data4 = response4.data;
+          if (1 === data4) {
+            var text4 = "Device 2 is on";
+          } else if (0 === data4) {
+            var text4 = "Device 2 is off";
+          }
+          axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v2').then((response2) => {
+            var text2 = "Temperature " + response2.data + "°C";
+            axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v3').then((response3) => {
+              var text3 = "brightness " + response3.data + " %";
+              const payload = {
+                type: "text",
+                text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3 + "\n"
               };
               return client.replyMessage(event.replyToken, payload);
             })
@@ -112,12 +150,7 @@ function handleEvent(event) {
       "packageId": "11539",
       "stickerId": "52114129",
     }
-    const payload2 = {
-      type: "text",
-      text: "test1\ntest2",
-    };
-    client.replyMessage(event.replyToken, payload, true);
-    return client.replyMessage(event.replyToken, payload2, true);
+    return client.replyMessage(event.replyToken, payload);
   }
 }
 const port = process.env.PORT || 3000;
