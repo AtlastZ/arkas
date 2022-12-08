@@ -20,42 +20,42 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
-  } else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 1'|| event.message.text==='turn device 1 on')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 1' || event.message.text === 'turn device 1 on')) {
     const payload = {
       type: "text",
       text: "เปิดอุปกรณ์ 1 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1=1');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 1'|| event.message.text === 'turn device 1 off')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 1' || event.message.text === 'turn device 1 off')) {
     const payload = {
       type: "text",
       text: "ปิดอุปกรณ์ 1 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1=0');
     return client.replyMessage(event.replyToken, payload);
-  }else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 2'|| event.message.text==='turn device 2 on')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 2' || event.message.text === 'turn device 2 on')) {
     const payload = {
       type: "text",
       text: "เปิดอุปกรณ์ 2 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4=1');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 2'|| event.message.text === 'turn device 2 off')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 2' || event.message.text === 'turn device 2 off')) {
     const payload = {
       type: "text",
       text: "ปิดอุปกรณ์ 2 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4=0');
     return client.replyMessage(event.replyToken, payload);
-  }else if (event.message.type === 'text' && (event.message.text === 'เปิดไฟ'|| event.message.text==='light on')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'เปิดไฟ' || event.message.text === 'light on')) {
     const payload = {
       type: "text",
       text: "เปิดไฟแล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=1');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'ปิดไฟ'|| event.message.text==='light off')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'ปิดไฟ' || event.message.text === 'light off')) {
     const payload = {
       type: "text",
       text: "ปิดไฟแล้วนะคะ"
@@ -64,19 +64,41 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && (event.message.text === 'สถานะ' || event.message.text === 'status')) {
     console.log("Printing val GET");
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
-      var data = response.data;
-      console.log("dataBuffer:" + data);
+    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
+      var data = response0.data;
       if (1 === data) {
-        var text1 = "ไฟเปิดอยู่";
+        var text0 = "หลอดไฟเปิดอยู่";
       } else if (0 === data) {
-        var text1 = "ไฟปิดอยู่";
+        var text0 = "หลอดไฟปิดอยู่";
       }
-      const payload = {
-        type: "text",
-        text: text1
-      };
-      return client.replyMessage(event.replyToken, payload);
+      axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1').then((response1) => {
+        var data1 = response1.data;
+        if (1 === data1) {
+          var text1 = "อุปกรณ์ 1 เปิดอยู่";
+        } else if (0 === data1) {
+          var text1 = "อุปกรณ์ 1 ปิดอยู่";
+        }
+        axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4').then((response4) => {
+          var data4 = response4.data;
+          if (1 === data4) {
+            var text4 = "อุปกรณ์ 2 เปิดอยู่";
+          } else if (0 === data4) {
+            var text4 = "อุปกรณ์ 2 ปิดอยู่";
+          }
+          axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v2').then((response2) => {
+            var text2 = "อุณหภูมิ " + response2.data + " องศา";
+            axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v3').then((response3) => {
+              var text3 = "ความสว่าง " + response3.data + " %";
+              const payload = {
+                type: "text",
+                text: text0+"\n"+text1+"\n"+text4+"\n"+text2+"\n"+text3+"\n"
+              };
+              return client.replyMessage(event.replyToken, payload);
+            })
+          })
+        })
+      })
+
     })
   } else if (event.message.type === 'text' && event.message.text === 'test') {
     const payload = {
@@ -87,15 +109,15 @@ function handleEvent(event) {
   } else {
     const payload = {
       "type": "sticker",
-      "packageId" : "11539",
-      "stickerId" : "52114129",
+      "packageId": "11539",
+      "stickerId": "52114129",
     }
     const payload2 = {
       type: "text",
       text: "test1\ntest2",
     };
-    client.replyMessage(event.replyToken,payload,true);
-    return client.replyMessage(event.replyToken,payload2,true);
+    client.replyMessage(event.replyToken, payload, true);
+    return client.replyMessage(event.replyToken, payload2, true);
   }
 }
 const port = process.env.PORT || 3000;
