@@ -91,7 +91,7 @@ function handleEvent(event) {
               var text3 = "ความสว่าง " + response3.data + " %";
               const payload = {
                 type: "text",
-                text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3 + "\n"
+                text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3
               };
               return client.replyMessage(event.replyToken, payload);
             })
@@ -129,7 +129,7 @@ function handleEvent(event) {
               var text3 = "brightness " + response3.data + " %";
               const payload = {
                 type: "text",
-                text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3 + "\n"
+                text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3
               };
               return client.replyMessage(event.replyToken, payload);
             })
