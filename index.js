@@ -64,9 +64,9 @@ function handleEvent(event) {
     };
     const message = {
       type: "text",
-      text: "test1\ntest2",
+      text: "อะไรนะคะ?",
     };
-    return client.replyMessage(event.replyToken,payload);
+    return client.replyMessage(event.replyToken,payload+message);
   }
 }
 const port = process.env.PORT || 3000;
