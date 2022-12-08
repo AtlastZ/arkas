@@ -193,7 +193,7 @@ function handleEvent(event) {
       "packageId": "11539",
       "stickerId": "52114129",
       type: "text",
-      text: "อะไรนะคะ? \nลองพิมพ์ 'คำสั่ง'\nIdk,try to typing 'command'",
+      text: "อะไรนะคะ? ลองพิมพ์ 'คำสั่ง'\nIdk,try to typing 'command'",
     }
     return client.replyMessage(event.replyToken, payload);
   }
