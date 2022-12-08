@@ -55,6 +55,7 @@ function handleEvent(event) {
       type: "text",
       text: "test1\ntest2",
     };
+    client.replyMessage(event.replyToken, "message\n");
     return client.replyMessage(event.replyToken, payload);
   }else{
 
