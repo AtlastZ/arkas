@@ -72,6 +72,9 @@ function handleEvent(event) {
       type: "text",
       text: "test1\ntest2",
     };
+    console.log(notificationDisabled);
+    client.replyMessage(event.replyToken,payload);
+    console.log(notificationDisabled);
     return client.replyMessage(event.replyToken,payload2);
   }
 }
