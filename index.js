@@ -62,7 +62,7 @@ function handleEvent(event) {
       "packageId" : "11539",
       "stickerId" : "52114129",
     }
-    client.replyMessage(event.replyToken, payload);
+    client.pushMessage(event.replyToken, payload);
     const payload2 = {
       type: "text",
       text: "test1\ntest2",
