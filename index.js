@@ -77,54 +77,63 @@ function handleEvent(event) {
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v5=0');
     return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
-    console.log("Printing val GET");
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
-      var data = response0.data;
-      if (1 === data) {
-        var text0 = "หลอดไฟเปิดอยู่";
-      } else if (0 === data) {
-        var text0 = "หลอดไฟปิดอยู่";
-      }
-      axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1').then((response1) => {
-        var data1 = response1.data;
-        if (1 === data1) {
-          var text1 = "อุปกรณ์ 1 เปิดอยู่";
-        } else if (0 === data1) {
-          var text1 = "อุปกรณ์ 1 ปิดอยู่";
-        }
-        axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4').then((response4) => {
-          var data4 = response4.data;
-          if (1 === data4) {
-            var text4 = "อุปกรณ์ 2 เปิดอยู่";
-          } else if (0 === data4) {
-            var text4 = "อุปกรณ์ 2 ปิดอยู่";
+    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v6').then((response6) => {
+      if (response6.data === 1) {
+        axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
+          var data = response0.data;
+          if (1 === data) {
+            var text0 = "หลอดไฟเปิดอยู่";
+          } else if (0 === data) {
+            var text0 = "หลอดไฟปิดอยู่";
           }
-          axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v2').then((response2) => {
-            var text2 = "อุณหภูมิ " + response2.data + " องศา";
-            axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v3').then((response3) => {
-              var text3 = "ความสว่าง " + response3.data + " %";
-              axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v5').then((response5) => {
-                var data5 = response5.data;
-                if (1 === data5) {
-                  var text5 = "เปิด-ปิดไฟอัตโนมัติ : เปิด";
-                } else if (0 === data4) {
-                  var text5 = "เปิด-ปิดไฟอัตโนมัติ : ปิด";
-                }
-                const payload = { 
-                  type: "text", 
-                  text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3 + "\n" + text5
-                }; 
-                return client.replyMessage(event.replyToken, payload);
+          axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1').then((response1) => {
+            var data1 = response1.data;
+            if (1 === data1) {
+              var text1 = "อุปกรณ์ 1 เปิดอยู่";
+            } else if (0 === data1) {
+              var text1 = "อุปกรณ์ 1 ปิดอยู่";
+            }
+            axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4').then((response4) => {
+              var data4 = response4.data;
+              if (1 === data4) {
+                var text4 = "อุปกรณ์ 2 เปิดอยู่";
+              } else if (0 === data4) {
+                var text4 = "อุปกรณ์ 2 ปิดอยู่";
+              }
+              axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v2').then((response2) => {
+                var text2 = "อุณหภูมิ " + response2.data + " องศา";
+                axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v3').then((response3) => {
+                  var text3 = "ความสว่าง " + response3.data + " %";
+                  axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v5').then((response5) => {
+                    var data5 = response5.data;
+                    if (1 === data5) {
+                      var text5 = "เปิด-ปิดไฟอัตโนมัติ : เปิด";
+                    } else if (0 === data4) {
+                      var text5 = "เปิด-ปิดไฟอัตโนมัติ : ปิด";
+                    }
+                    const payload = {
+                      type: "text",
+                      text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3 + "\n" + text5
+                    };
+                    return client.replyMessage(event.replyToken, payload);
+                  })
+                })
               })
             })
           })
         })
-      })
-
+      } else if (response6.data === 0) {
+        const payload = {
+          type: "text",
+          text: "ไม่สามารถเชื่อมต่อกับอุปกรณ์ปลายทางได้ค่ะ"
+        };
+        return client.replyMessage(event.replyToken, payload);
+      }
     })
   } else if (event.message.type === 'text' && (event.message.text === 'status' || event.message.text === 'Status')) {
-    console.log("Printing val GET");
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
+    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v6').then((response6) => {
+      if (response6.data === 1) {
+        axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
       var data = response0.data;
       if (1 === data) {
         var text0 = "The lamp is on";
@@ -156,48 +165,55 @@ function handleEvent(event) {
                 } else if (0 === data4) {
                   var text5 = "Dynamic Light is off";
                 }
-                const payload = { 
-                  type: "text", 
+                const payload = {
+                  type: "text",
                   text: text0 + "\n" + text1 + "\n" + text4 + "\n" + text2 + "\n" + text3 + "\n" + text5
-                }; 
+                };
                 return client.replyMessage(event.replyToken, payload);
               })
-
             })
           })
         })
       })
-
     })
-  } else if (event.message.type === 'text' && event.message.text === 'test') {
-    const payload = {
-      type: "text",
-      text: "test1\ntest2",
-    };
-    return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && event.message.text === 'คำสั่ง') {
-    const payload = {
-      type: "text",
-      text: "เช็คสถานะ : [สถานะ]\nเปิดไฟ : [เปิดไฟ],[01]\nปิดไฟ : [ปิดไฟ],[00]\n1 : [เปิดอุปกรณ์ 1][11]\n     [ปิดอุปกรณ์ 1][10]\n2 : [เปิดอุปกรณ์ 2][21]\n     [ปิดอุปกรณ์ 2][20]\nauto : [เปิดออโต้][ปิดออโต้]",
-    };
-    return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'list' || event.message.text === 'commands' || event.message.text === 'command' || event.message.text === 'Commands' || event.message.text === 'Command')) {
-    const payload = {
-      type: "text",
-      text: "view status : [Status]\nlamp on : [light on],[01]\nlamp off : [light off],[00]\n1 : [turn device 1 on][11]\n     [turn device 1 off][10]\n2 : [turn device 2 on][21]\n     [turn device 2 off][20]\nauto : [dynamic light on]\n         [dynamic light off]\n         [auto on][auto off]",
-    };
-    return client.replyMessage(event.replyToken, payload);
-  } else {
-    const payload = {
-      "type": "sticker",
-      "packageId": "11539",
-      "stickerId": "52114129",
-      "text": "อะไรนะคะ? ลองพิมพ์ 'คำสั่ง'\nIdk, try to typing 'command'",
+      } else if (response6.data === 0) {
+        const payload = {
+          type: "text",
+          text: "cannot connect to end device"
+        };
+        return client.replyMessage(event.replyToken, payload);
+      }
+    })
+
+    } else if (event.message.type === 'text' && event.message.text === 'test') {
+      const payload = {
+        type: "text",
+        text: "test1\ntest2",
+      };
+      return client.replyMessage(event.replyToken, payload);
+    } else if (event.message.type === 'text' && event.message.text === 'คำสั่ง') {
+      const payload = {
+        type: "text",
+        text: "เช็คสถานะ : [สถานะ]\nเปิดไฟ : [เปิดไฟ],[01]\nปิดไฟ : [ปิดไฟ],[00]\n1 : [เปิดอุปกรณ์ 1][11]\n     [ปิดอุปกรณ์ 1][10]\n2 : [เปิดอุปกรณ์ 2][21]\n     [ปิดอุปกรณ์ 2][20]\nauto : [เปิดออโต้][ปิดออโต้]",
+      };
+      return client.replyMessage(event.replyToken, payload);
+    } else if (event.message.type === 'text' && (event.message.text === 'list' || event.message.text === 'commands' || event.message.text === 'command' || event.message.text === 'Commands' || event.message.text === 'Command')) {
+      const payload = {
+        type: "text",
+        text: "view status : [Status]\nlamp on : [light on],[01]\nlamp off : [light off],[00]\n1 : [turn device 1 on][11]\n     [turn device 1 off][10]\n2 : [turn device 2 on][21]\n     [turn device 2 off][20]\nauto : [dynamic light on]\n         [dynamic light off]\n         [auto on][auto off]",
+      };
+      return client.replyMessage(event.replyToken, payload);
+    } else {
+      const payload = {
+        "type": "sticker",
+        "packageId": "11539",
+        "stickerId": "52114129",
+        "text": "อะไรนะคะ? ลองพิมพ์ 'คำสั่ง'\nIdk, try to typing 'command'",
+      }
+      return client.replyMessage(event.replyToken, payload);
     }
-    return client.replyMessage(event.replyToken, payload);
   }
-}
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`listening on ${port}`);
-});
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`listening on ${port}`);
+  });
