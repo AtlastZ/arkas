@@ -34,7 +34,7 @@ function handleEvent(event) {
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=0');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'สถานะ'|| event.message.text==='status')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'สถานะ' || event.message.text === 'status')) {
     console.log("Printing val GET");
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response) => {
       var data = response.data;
@@ -55,10 +55,18 @@ function handleEvent(event) {
       type: "text",
       text: "test1\ntest2",
     };
-    client.replyMessage(event.replyToken, "message\n");
     return client.replyMessage(event.replyToken, payload);
-  }else{
-
+  } else {
+    const payload = {
+      type: "sticker",
+      packageId : "11539",
+      stickerId : "52114129"
+    };
+    const message = {
+      type: "text",
+      text: "test1\ntest2",
+    };
+    return client.replyMessage(event.replyToken,payload+message);
   }
 }
 const port = process.env.PORT || 3000;
