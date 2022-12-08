@@ -66,10 +66,8 @@ function handleEvent(event) {
       type: "text",
       text: "test1\ntest2",
     };
-    console.log(notificationDisabled);
-    client.replyMessage(event.replyToken,payload,false);
-    console.log(notificationDisabled);
-    return client.replyMessage(event.replyToken,payload2);
+    client.replyMessage(event.replyToken,payload,true);
+    return client.replyMessage(event.replyToken,payload2,true);
   }
 }
 const port = process.env.PORT || 3000;
