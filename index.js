@@ -20,42 +20,42 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
-  } else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 1' || event.message.text === 'turn device 1 on')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 1' || event.message.text === 'turn device 1 on'||event.message.text === '11')) {
     const payload = {
       type: "text",
       text: "เปิดอุปกรณ์ 1 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1=1');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 1' || event.message.text === 'turn device 1 off')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 1' || event.message.text === 'turn device 1 off'||event.message.text === '10')) {
     const payload = {
       type: "text",
       text: "ปิดอุปกรณ์ 1 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v1=0');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 2' || event.message.text === 'turn device 2 on')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'เปิดอุปกรณ์ 2' || event.message.text === 'turn device 2 on'||event.message.text === '21')) {
     const payload = {
       type: "text",
       text: "เปิดอุปกรณ์ 2 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4=1');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 2' || event.message.text === 'turn device 2 off')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'ปิดอุปกรณ์ 2' || event.message.text === 'turn device 2 off'||event.message.text === '20')) {
     const payload = {
       type: "text",
       text: "ปิดอุปกรณ์ 2 แล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v4=0');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'เปิดไฟ' || event.message.text === 'light on')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'เปิดไฟ' || event.message.text === 'light on'||event.message.text === '01')) {
     const payload = {
       type: "text",
       text: "เปิดไฟแล้วนะคะ"
     };
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0=1');
     return client.replyMessage(event.replyToken, payload);
-  } else if (event.message.type === 'text' && (event.message.text === 'ปิดไฟ' || event.message.text === 'light off')) {
+  } else if (event.message.type === 'text' && (event.message.text === 'ปิดไฟ' || event.message.text === 'light off'||event.message.text === '00')) {
     const payload = {
       type: "text",
       text: "ปิดไฟแล้วนะคะ"
@@ -100,7 +100,7 @@ function handleEvent(event) {
       })
 
     })
-  }else if (event.message.type === 'text' && event.message.text === 'status') {
+  }else if (event.message.type === 'text' && (event.message.text === 'status'||event.message.text === 'Status')) {
     console.log("Printing val GET");
     axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
       var data = response0.data;
@@ -142,6 +142,18 @@ function handleEvent(event) {
     const payload = {
       type: "text",
       text: "test1\ntest2",
+    };
+    return client.replyMessage(event.replyToken, payload);
+  }else if (event.message.type === 'text' && event.message.text === 'คำสั่ง') {
+    const payload = {
+      type: "text",
+      text: "เช็คสถานะ:[สถานะ]\n,เปิดไฟ:[เปิดไฟ],[01]\nปิดไฟ:[ปิดไฟ],[00]\n1:[เปิดอุปกรณ์ 1][ปิดอุปกรณ์ 1]\n2:[เปิดอุปกรณ์ 2][ปิดอุปกรณ์ 2]\n",
+    };
+    return client.replyMessage(event.replyToken, payload);
+  }else if (event.message.type === 'text' && (event.message.text === 'list'||event.message.text === 'commands'||event.message.text === 'command'||event.message.text === 'Commands'||event.message.text === 'Command')) {
+    const payload = {
+      type: "text",
+      text: "view status:[Status]\n,lamp on:[light on],[01]\nlamp off:[light off],[00]\n1:[turn device 1 on][turn device 1 off]\n2:[turn device 2 on][turn device 2 off]\n",
     };
     return client.replyMessage(event.replyToken, payload);
   } else {
