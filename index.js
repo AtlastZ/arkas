@@ -62,7 +62,7 @@ function handleEvent(event) {
       "packageId" : "11539",
       "stickerId" : "52114129",
     }
-    client.pushMessage(payload)
+    client.pushMessage(userId, payload);
     const payload2 = {
       type: "text",
       text: "test1\ntest2",
