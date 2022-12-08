@@ -53,9 +53,11 @@ function handleEvent(event) {
   } else if (event.message.type === 'text' && event.message.text === 'test') {
     const payload = {
       type: "text",
-      text: "test1",
+      text: "test1\ntest2",
     };
-    return client.replyMessage(event.replyToken, payload),client.replyMessage(event.replyToken, payload);
+    return client.replyMessage(event.replyToken, payload);
+  }else{
+
   }
 }
 const port = process.env.PORT || 3000;
