@@ -20,12 +20,6 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
-  } else if (event.message.type === 'text' && event.message.text === 'Hello') {
-    const payload = {
-      type: "text",
-      text: "สวัสดีครับ พิมพ์คำสั่งที่ต้องการได้เลยครับ"
-    };
-    return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && event.message.text === 'เปิดไฟ') {
     const payload = {
       type: "text",
@@ -56,6 +50,12 @@ function handleEvent(event) {
       };
       return client.replyMessage(event.replyToken, payload);
     })
+  } else if (event.message.type === 'text' && event.message.text === 'test') {
+    const payload = {
+      type: "text",
+      text: "test1",
+    };
+    return client.replyMessage(event.replyToken, payload),client.replyMessage(event.replyToken, payload);
   }
 }
 const port = process.env.PORT || 3000;
