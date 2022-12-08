@@ -60,13 +60,11 @@ function handleEvent(event) {
     const payload = {
       "type": "sticker",
       "packageId" : "11539",
-      "stickerId" : "52114129"
-    };
-    const message = {
+      "stickerId" : "52114129",
       type: "text",
       text: "อะไรนะคะ?",
     };
-    return client.replyMessage(event.replyToken,payload+message);
+    return client.replyMessage(event.replyToken,payload);
   }
 }
 const port = process.env.PORT || 3000;
