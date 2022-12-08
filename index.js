@@ -178,13 +178,13 @@ function handleEvent(event) {
   } else if (event.message.type === 'text' && event.message.text === 'คำสั่ง') {
     const payload = {
       type: "text",
-      text: "เช็คสถานะ : [สถานะ]\nเปิดไฟ : [เปิดไฟ],[01]\nปิดไฟ : [ปิดไฟ],[00]\n1 : [เปิดอุปกรณ์ 1][ปิดอุปกรณ์ 1]\n2 : [เปิดอุปกรณ์ 2][ปิดอุปกรณ์ 2]\auto : [เปิดออโต้][ปิดออโต้]",
+      text: "เช็คสถานะ : [สถานะ]\nเปิดไฟ : [เปิดไฟ],[01]\nปิดไฟ : [ปิดไฟ],[00]\n1 : [เปิดอุปกรณ์ 1][ปิดอุปกรณ์ 1]\n2 : [เปิดอุปกรณ์ 2][ปิดอุปกรณ์ 2]\nauto : [เปิดออโต้][ปิดออโต้]",
     };
     return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && (event.message.text === 'list' || event.message.text === 'commands' || event.message.text === 'command' || event.message.text === 'Commands' || event.message.text === 'Command')) {
     const payload = {
       type: "text",
-      text: "view status : [Status]\nlamp on : [light on],[01]\nlamp off : [light off],[00]\n1 : [turn device 1 on]\n    [turn device 1 off]\n2 : [turn device 2 on]\n    [turn device 2 off]\nauto : [dynamic light on]\n       [dynamic light off]\n       [auto on][auto off]",
+      text: "view status : [Status]\nlamp on : [light on],[01]\nlamp off : [light off],[00]\n1 : [turn device 1 on]\n     [turn device 1 off]\n2 : [turn device 2 on]\n     [turn device 2 off]\nauto : [dynamic light on]\n         [dynamic light off]\n         [auto on][auto off]",
     };
     return client.replyMessage(event.replyToken, payload);
   } else {
