@@ -77,8 +77,8 @@ function handleEvent(event) {
     axios.get('https://sgp1.blynk.cloud/external/api/update?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v5=0');
     return client.replyMessage(event.replyToken, payload);
   } else if (event.message.type === 'text' && event.message.text === 'สถานะ') {
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v6').then((response6) => {
-      if (response6.data === 1) {
+    axios.get('https://sgp1.blynk.cloud/external/api/isHardwareConnected?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan').then((response6) => {
+      if (response6.data === "true") {
         axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
           var data = response0.data;
           if (1 === data) {
@@ -122,7 +122,7 @@ function handleEvent(event) {
             })
           })
         })
-      } else if (response6.data === 0) {
+      } else if (response6.data === "false") {
         const payload = {
           type: "text",
           text: "ไม่สามารถเชื่อมต่อกับอุปกรณ์ปลายทางได้ค่ะ"
@@ -131,8 +131,8 @@ function handleEvent(event) {
       }
     })
   } else if (event.message.type === 'text' && (event.message.text === 'status' || event.message.text === 'Status')) {
-    axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v6').then((response6) => {
-      if (response6.data === 1) {
+    axios.get('https://sgp1.blynk.cloud/external/api/isHardwareConnected?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan').then((response6) => {
+      if (response6.data === "true") {
         axios.get('https://sgp1.blynk.cloud/external/api/get?token=YHG7jYhhB9zjS-KHhuTnTupvuQucBLan&v0').then((response0) => {
       var data = response0.data;
       if (1 === data) {
@@ -176,7 +176,7 @@ function handleEvent(event) {
         })
       })
     })
-      } else if (response6.data === 0) {
+      } else if (response6.data === "false") {
         const payload = {
           type: "text",
           text: "cannot connect to end device"
